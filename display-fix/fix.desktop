@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Fix display layout
+Exec=/home/ice.gateway/makovec/Work/personal/helpers/display-fix/fix.sh
+Icon=/home/ice.gateway/makovec/Work/personal/helpers/display-fix/fix.svg

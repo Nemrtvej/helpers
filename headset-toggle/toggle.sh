@@ -11,8 +11,10 @@ PROFILE_HSP="headset_head_unit"
 
 if [[ "${CURRENT_PROFILE}" = "$PROFILE_A2DP" ]];
     then
+	echo "Setting to HSP"
         pacmd set-card-profile ${CARD_INDEX} ${PROFILE_HSP}
     else
+	echo "Setting to A2DP"
         pacmd set-card-profile ${CARD_INDEX} ${PROFILE_A2DP}
 fi
 
