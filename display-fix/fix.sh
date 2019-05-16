@@ -7,5 +7,5 @@ source ${DIR}/config.ini
 
 
 xrandr --output ${TOP_DISPLAY} --pos 0x0
-xrandr --output ${BOTTOM_DISPLAY} --pos 0x1080
+xrandr --output ${BOTTOM_DISPLAY} --pos 320x1440
 
