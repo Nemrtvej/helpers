@@ -1,0 +1,12 @@
+# /.config/autostart/yakuake.desktop
+
+[Desktop Entry]
+Type=Application
+Exec=yakuake
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=yakuake
+Name=yakuake
+Comment[en_US]=
+Comment=
