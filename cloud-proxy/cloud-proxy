@@ -1,0 +1,37 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+function show_usage() {
+  echo "Specify which config you want to use".
+  echo "Possible configs:"
+
+  cat "${DIR}/config.txt" | awk -F ',' '{ print " - " $1 }'
+}
+
+
+readarray -t CONFIGURATIONS < "${DIR}/config.txt"
+DESIRED_ENV="${1}"
+
+if [[ -z "${DESIRED_ENV}" ]]; then
+  show_usage
+  exit 0
+fi
+
+
+for i in "${CONFIGURATIONS[@]}"
+do
+   :
+   IFS=',' read -r -a PARAMS <<< "$i"
+   NAME="${PARAMS[0]}"
+   DSN="${PARAMS[1]}"
+   PORT="${PARAMS[2]}"
+
+   if [[ "${DESIRED_ENV}" == "${NAME}" ]]; then
+      cloud_sql_proxy "-instances=${DSN}=tcp:${PORT}" -enable_iam_login
+      exit 0
+   fi
+done
+
+echo "${DESIRED_ENV} is not configured."
+show_usage
