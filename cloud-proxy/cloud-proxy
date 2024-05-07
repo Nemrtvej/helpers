@@ -26,9 +26,11 @@ do
    NAME="${PARAMS[0]}"
    DSN="${PARAMS[1]}"
    PORT="${PARAMS[2]}"
+   IAM="${PARAMS[3]}"
 
    if [[ "${DESIRED_ENV}" == "${NAME}" ]]; then
-      cloud_sql_proxy "-instances=${DSN}=tcp:${PORT}" -enable_iam_login
+      # cloud_sql_proxy "-instances=${DSN}=tcp:0.0.0.0:${PORT}" -enable_iam_login
+      cloud-sql-proxy "${DSN}" --port "${PORT}" "${IAM}"
       exit 0
    fi
 done
